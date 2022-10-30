@@ -5,5 +5,6 @@ function Header(){
         <div className="title">
             <h1>Netlab Bookstore</h1>
         </div>
-    )
+    );
 }
+export default Header;

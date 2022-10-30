@@ -1,4 +1,4 @@
-import Header from './Header.js';
+import Header from './header.js';
 import NewReleaseBookTable from './main.js';
 import Footer from'./footer.js';
 

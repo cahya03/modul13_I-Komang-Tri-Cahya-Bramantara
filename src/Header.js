@@ -1,9 +1,9 @@
 import './main.css'
 
-function Title(){
+function Header(){
     return(
         <div className="title">
-            <h1></h1>
+            <h1>Netlab Bookstore</h1>
         </div>
     )
 }

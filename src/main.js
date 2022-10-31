@@ -1,62 +1,93 @@
-import Table from "react-bootstrap/Table";
+import * as React from "react";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
-function NewReleaseBookTable() {
-  return (
-    <Table striped bordered hover variant>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Subtitle</th>
-          <th>ISBN13</th>
-          <th>Price</th>
-          <th>Image</th>
-          <th>Url</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Deno Succinctly</td>
-          <td> </td>
-          <td>9781642002140</td>
-          <td>$0.00</td>
-          <td><img src="https://itbook.store/img/books/9781642002140.png"></img></td>
-          <td><a href="https://itbook.store/books/9781642002140">https://itbook.store/books/9781642002140</a></td>
-        </tr>
-        <tr>
-            <td>Robotics, AI, and Humanity</td>
-            <td>Science, Ethics, and Policy</td>
-            <td>9783030541729</td>
-            <td>59.99</td>
-            <td><img src="https://itbook.store/img/books/9783030541729.png"></img></td>
-            <td><a href="https://itbook.store/books/9783030541729">https://itbook.store/books/9783030541729</a></td>
-        </tr>
-        <tr>
-            <td>Introduction to Autonomous Robots, 3rd Edition</td>
-            <td> </td>
-            <td>9781493773077</td>
-            <td>$20.99</td>
-            <td><img src="https://itbook.store/img/books/9781493773077.png"></img></td>
-            <td><a href="https://itbook.store/books/9781493773077">https://itbook.store/books/9783030541729</a></td>
-        </tr>
-        <tr>
-            <td>Learning Go</td>
-            <td>An Idiomatic Approach to Real-World Go Programming</td>
-            <td>9781492077213</td>
-            <td>$35.88</td>
-            <td><img src="https://itbook.store/img/books/9781492077213.png"></img></td>
-            <td><a href="https://itbook.store/books/9781492077213">https://itbook.store/books/9783030541729</a></td>
-        </tr>
-        <tr>
-            <td>Open Workbook of Cryptology</td>
-            <td>A project-based introduction to crypto in Python</td>
-            <td>1001656678502</td>
-            <td>$0.00</td>
-            <td><img src="https://itbook.store/img/books/1001656678502.png"></img></td>
-            <td><a href="https://itbook.store/books/1001656678502">https://itbook.store/books/9783030541729</a></td>
-        </tr>
-      </tbody>
-    </Table>
-  );
+
+function createData(Title, Subtitle, isbn13, Price, Image, Url) {
+  return { Title, Subtitle, isbn13, Price, Image, Url };
 }
 
-export default NewReleaseBookTable;
+const rows = [
+  createData(
+    "Intermediate Statistics with R",
+    "",
+    1001651662833,
+    "$0.00",
+    "https://itbook.store/img/books/1001651662833.png",
+    "https://itbook.store/books/1001651662833"
+  ),
+  createData(
+    "Microsoft Excel Data Analysis and Business Modeling, 7th Edition",
+    "Office 2021 and Microsoft 365",
+    "9780137613663",
+    "$34.87",
+    "https://itbook.store/img/books/9780137613663.png",
+    "https://itbook.store/books/9780137613663"
+  ),
+  createData(
+    "Microsoft Excel Step by Step",
+    "Office 2021 and Microsoft 365",
+    "9780137564279",
+    "$30.32",
+    "https://itbook.store/img/books/9780137564279.png",
+    "https://itbook.store/books/9780137564279"
+  ),
+  createData(
+    "Microsoft Office Inside Out",
+    "Office 2021 and Microsoft 365",
+    "9780137564095",
+    "$36.93",
+    "https://itbook.store/img/books/9780137564095.png",
+    "https://itbook.store/books/9780137564095"
+  ),
+  createData(
+    "Windows Internals, Part 2, 7th Edition",
+    "",
+    "9780135462409",
+    "$53.49",
+    "https://itbook.store/img/books/9780135462409.png",
+    "https://itbook.store/books/9780135462409"
+  )
+];
+
+export default function BasicTable() {
+  return (
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650, fontFamily:'sans-serif' }} aria-label="simple table">
+        <TableHead>
+          <TableRow sx={{ "td, th": { border: 2, borderColor:'#fff'},"th":{fontSize: 24, color:'white', bgcolor:'black'}}}>
+            <TableCell align="center">Title</TableCell>
+            <TableCell align="center">Subtitle</TableCell>
+            <TableCell align="center">ISBN13</TableCell>
+            <TableCell align="center">Price</TableCell>
+            <TableCell align="center">Image</TableCell>
+            <TableCell align="center">Url</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map((row) => (
+            <TableRow key={row.Title} sx={{ "td, th": { border: 2, fontSize:20, bgcolor: '#b9b7bd',borderColor:'#fff' } }}>
+              <TableCell component="th" scope="row">
+                {row.Title}
+              </TableCell>
+              <TableCell align="left">{row.Subtitle}</TableCell>
+              <TableCell align="left">{row.isbn13}</TableCell>
+              <TableCell align="left">{row.Price}</TableCell>
+              <TableCell align="center">
+                <img src={row.Image}></img>
+              </TableCell>
+              <TableCell align="center">
+                <a href={row.Url}>{row.Url}</a>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+}

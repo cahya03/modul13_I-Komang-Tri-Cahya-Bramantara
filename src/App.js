@@ -1,12 +1,12 @@
 import Header from './header.js';
-import NewReleaseBookTable from './main.js';
+import BasicTable from './main.js';
 import Footer from'./footer.js';
 
 function App() {
   return (
     <div className="App">
       <Header/>
-      <NewReleaseBookTable/>
+      <BasicTable/>
       <Footer/>
     </div>
   );

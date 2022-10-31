@@ -55,7 +55,7 @@ const rows = [
   )
 ];
 
-export default function BasicTable() {
+export default function Body() {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650, fontFamily:'sans-serif' }} aria-label="simple table">

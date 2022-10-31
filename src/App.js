@@ -1,12 +1,12 @@
 import Header from './header.js';
-import BasicTable from './main.js';
+import Body from './main.js';
 import Footer from'./footer.js';
 
 function App() {
   return (
     <div className="App">
       <Header/>
-      <BasicTable/>
+      <Body/>
       <Footer/>
     </div>
   );
